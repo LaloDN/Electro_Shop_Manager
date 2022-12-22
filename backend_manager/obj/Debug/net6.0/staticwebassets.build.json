@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dV8mS7tKzt2HUsWm4rtCOFuLS0az+T3ng6wZ8y0QI9A=",
+  "Source": "backend_manager",
+  "BasePath": "_content/backend_manager",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
