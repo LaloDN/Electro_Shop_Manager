@@ -124,12 +124,14 @@ CREATE TABLE products(
 );
 
 CREATE TABLE orders(
-	order_id 		int 			NOT NULL AUTO_INCREMENT,
-    order_date 		datetime 		NOT NULL,
-    shiping_date 	datetime,
-    order_status 	nvarchar(20) 	NOT NULL,
-	comments 		nvarchar(15),
+	order_id 			int 			NOT NULL AUTO_INCREMENT,
+    employee_account_id int 			NOT NULL,
+    order_date 			datetime 		NOT NULL,
+    shiping_date 		datetime,
+    order_status 		nvarchar(20) 	NOT NULL,
+	comments 			nvarchar(15),
     CONSTRAINT PRIMARY KEY PK_Id_Order (order_id),
+    CONSTRAINT FOREIGN KEY FK_Id_Employee_Order (employee_account_id) REFERENCES employee_accounts (employee_account_id),
     CONSTRAINT CHK_Status CHECK (order_status='Ordered' or order_status='Delivering' or 
 									order_status='Canceled' or order_status='Completed' or order_status='Other')
 );
@@ -157,4 +159,13 @@ CREATE TABLE inventory(
     CONSTRAINT PRIMARY KEY PK_Id_Inventory (inventory_id),
     CONSTRAINT FOREIGN KEY FK_Id_Establishment_Inventory (establishment_id) REFERENCES establishments (establishment_id),
     CONSTRAINT FOREIGN KEY FK_Id_Product_Inventory (product_id) REFERENCES products (product_id)
+);
+
+CREATE TABLE employee_accounts(
+	employee_account_id int 			NOT NULL AUTO_INCREMENT,
+    account_number 		int UNIQUE 		NOT NULL,
+    password 			nvarchar(100) 	NOT NULL,
+    first_name 			nvarchar(30) 	NOT NULL,
+    last_name 			nvarchar(30) 	NOT NULL,
+    CONSTRAINT PRIMARY KEY PK_Id_Employee_Account (employee_account_id)
 );
